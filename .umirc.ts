@@ -5,5 +5,8 @@ export default defineConfig({
         type: 'none'
     },
     routes: [{ path: '/', component: '@/pages/index' }],
-    fastRefresh: {}
+    fastRefresh: {},
+    extraBabelPlugins: [
+        ['import', { libraryName: 'antd-mobile', style: true }] //按需加载 antd-mobile 样式文件
+    ]
 })

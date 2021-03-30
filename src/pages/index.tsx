@@ -1,4 +1,6 @@
 import React, { useState, FC } from 'react'
+import { Button } from 'antd-mobile'
+import classNames from 'classnames'
 
 import styles from './index.less'
 
@@ -10,8 +12,9 @@ const pageIndex: FC = () => {
     }
 
     return (
-        <div className={styles.title} onClick={clickText}>
-            {text}
+        <div className={classNames(styles.title)} onClick={clickText}>
+            测试
+            <Button>{text}</Button>
         </div>
     )
 }
