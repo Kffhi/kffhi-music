@@ -2,7 +2,7 @@ import React, { useState, FC } from 'react'
 import { Button } from 'antd-mobile'
 import classNames from 'classnames'
 
-import styles from './index.less'
+import styles from './style.less'
 
 const pageIndex: FC = () => {
     const [text, setText] = useState('初始化')

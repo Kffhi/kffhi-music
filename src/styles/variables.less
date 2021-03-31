@@ -1,0 +1,73 @@
+/* 1px border */
+.one-px-line(@color: #dcdcdc) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 0.1rem;
+        background: @color;
+        transform: scaleY(0.5);
+    }
+}
+
+.one-px-bottom(@color: #DCDCDC) {
+    .one-px-line(@color);
+
+    &::after {
+        bottom: 0;
+    }
+}
+
+.one-px-top(@color: #DCDCDC) {
+    .one-px-line(@color);
+
+    &::after {
+        top: 0;
+    }
+}
+
+/* 文字超长省略 */
+.ellipsis (@line: 1) when (@line =1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ellipsis (@line) when not(@line =1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @line;
+}
+
+/* 文字两边括号 */
+.brackets {
+    &::before {
+        content: '（';
+    }
+
+    &::after {
+        content: '）';
+    }
+}
+
+/* 文字前面dot */
+.prefixDot(@color: #333, @distance: 0.6rem, @top) {
+    padding-left: @distance + 0.5rem;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        top: @top;
+        left: 0;
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 100%;
+        background-color: @color;
+    }
+}
