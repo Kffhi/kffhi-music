@@ -1,0 +1,326 @@
+.player {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    z-index: 500;
+
+    .backgroundWrapper {
+        z-index: 500;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: #222222;
+
+        .imgWrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            // transform: scale(5);
+            filter: blur(20rem);
+            opacity: 6;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            opacity: 10;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(200, 200, 200, 0.5);
+        }
+    }
+
+    .containerWrapper {
+        z-index: 500;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        .header {
+            width: 100%;
+            height: 4.8rem;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            color: white;
+
+            .goBack {
+                width: 4.8rem;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                i {
+                    font-size: 2.1rem;
+                }
+            }
+
+            .text {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 1rem;
+
+                .title {
+                    font-size: 1.4rem;
+                }
+
+                .singer {
+                    font-size: 1rem;
+                    color: #eeeeee;
+                    display: flex;
+                    align-items: center;
+
+                    i {
+                        font-size: 1rem;
+                        margin-top: 0.1rem;
+                    }
+                }
+            }
+        }
+
+        .picAndLyricWrapper {
+            height: calc(~'100vh - 21.8rem');
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .lyricWrapeer {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                .noLyric {
+                    justify-content: center;
+                }
+
+                .linWrapper {
+                    width: 100%;
+                    height: 36rem;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    overflow: hidden;
+                    color: #cccccc;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    -ms-overflow-style: none;
+                    overflow: -moz-scrollbars-none;
+
+                    .lyricLine {
+                        // height: 2rem;
+                        line-height: 2rem;
+                        margin: 0.5rem 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .currentLine {
+                        color: #eeeeee;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .loop {
+                width: 75vw;
+                height: 75vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                border: 0.5rem grey solid;
+
+                .imgWrapper {
+                    width: 70vw;
+                    height: 70vw;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    animation: rotate 20s linear infinite;
+                    animation-play-state: paused;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .imgWrapperPlaying {
+                    animation-play-state: running;
+                }
+            }
+        }
+
+        .bottomWrapper {
+            height: 17rem;
+            position: fixed;
+            bottom: 0;
+            color: #eeeeee;
+
+            .iconBar {
+                height: 5rem;
+                width: 100vw;
+                display: flex;
+                justify-content: center;
+
+                .iconWrapper {
+                    width: 16vw;
+                    height: 100%;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .commentNum {
+                        position: absolute;
+                        bottom: 1rem;
+                        right: 1rem;
+                    }
+
+                    i {
+                        font-size: 2.4rem;
+                    }
+                }
+
+                .isLove {
+                    i {
+                        color: #ed4014;
+                    }
+                }
+            }
+
+            .progressBar {
+                height: 4rem;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                .time {
+                    position: absolute;
+                    height: 100%;
+                    width: 4rem;
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.1rem;
+                    justify-content: center;
+                }
+
+                .left {
+                    left: 1.5rem;
+                }
+
+                .right {
+                    right: 1.5rem;
+                }
+
+                .backLine {
+                    position: relative;
+                    width: 25rem;
+                    height: 0.2rem;
+                    background: #eeeeee;
+
+                    .prograssLine {
+                        position: absolute;
+                        top: -0.1rem;
+                        // width = (currentTime / playSong.time) * 25rem
+                        height: 0.4rem;
+                        background: #ffffff;
+                        border-top-right-radius: 0.2rem;
+                        border-top-left-radius: 0.2rem;
+                        border-bottom-left-radius: 0.2rem;
+                        border-bottom-right-radius: 0.2rem;
+                    }
+
+                    .dotWrapper {
+                        background: transparent;
+                        position: absolute;
+                        width: 2rem;
+                        height: 2rem;
+                        // 偏移left = -0.3 + prograssLine.width
+                        top: -0.9rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .dot {
+                            position: absolute;
+                            width: 0.8rem;
+                            height: 0.8rem;
+                            border-radius: 50%;
+                            background: #ffffff;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .dotColor {
+                                height: 0.2rem;
+                                width: 0.2rem;
+                                border-radius: 50%;
+                                background: #108ee9;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .playCtrlBar {
+                height: 8rem;
+                width: 100vw;
+                display: flex;
+                justify-content: center;
+            }
+
+            .ctrlIconWrapper {
+                width: 16vw;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                i {
+                    font-size: 2.5rem;
+                }
+            }
+
+            .playIconWrapper {
+                width: 20vw;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                i {
+                    font-size: 4.5rem;
+                }
+            }
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+}

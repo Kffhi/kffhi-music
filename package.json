@@ -22,10 +22,12 @@
         ]
     },
     "dependencies": {
+        "@umijs/plugin-dva": "^0.11.0",
         "antd-mobile": "^2.3.4",
         "classnames": "^2.2.6",
         "dva": "^2.4.1",
         "good-storage": "^1.1.1",
+        "lyric-parser": "^1.0.1",
         "prop-types": "^15.7.2",
         "react": "17.x",
         "react-dom": "17.x",
@@ -34,6 +36,7 @@
     "devDependencies": {
         "@types/classnames": "^2.2.9",
         "@types/good-storage": "^1.1.0",
+        "@types/lyric-parser": "^1.0.2",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
         "@types/react-infinite-scroller": "^1.2.1",

@@ -4,11 +4,11 @@ import { getLoveSong } from '../../utils/cache'
 import Toast from '../../components/Toast'
 
 interface ListItem {
-    id: string;
-    url: string;
-    title: string;
-    trackCount: string;
-    author: string
+    id?: string;
+    url?: string;
+    title?: string;
+    trackCount?: string;
+    author?: string
 }
 
 interface Props {

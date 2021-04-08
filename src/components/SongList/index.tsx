@@ -4,7 +4,7 @@ import styles from './style.less'
 interface Props {
     songList: any;
     history: any;
-    showAll: boolean;
+    showAll?: boolean;
     tab: string
 }
 
