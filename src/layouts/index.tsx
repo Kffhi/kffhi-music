@@ -1,16 +1,16 @@
 import React, { useState, Fragment, useEffect, useRef, FC } from 'react'
-import { Button } from 'antd-mobile'
+// import { Button } from 'antd-mobile'
 import classNames from 'classnames'
 import Lyric from 'lyric-parser'
 import { connect } from 'dva'
-import netLyric from '../../utils/lyric'
-import { getNetSongDetail, getNetSongLyric } from '../../services/netease'
-import { getTencentSongDetail, getTencentSongLyric } from '../../services/tencent'
-import { saveLoveSong, getLoveSong, deleteLoveSong } from '../../utils/cache'
-import Toast from '../../components/Toast'
-import MiniPlay from '../../components/miniPlay'
-import PlayList from '../../components/PlayList'
-import { format, shuffle } from '../../utils/format'
+// import netLyric from '../utils/lyric'
+import { getNetSongDetail, getNetSongLyric } from '../services/netease'
+import { getTencentSongDetail, getTencentSongLyric } from '../services/tencent'
+import { saveLoveSong, getLoveSong, deleteLoveSong } from '../utils/cache'
+import Toast from '../components/Toast'
+import MiniPlay from '../components/miniPlay'
+import PlayList from '../components/PlayList'
+import { format, shuffle } from '../utils/format'
 import styles from './style.less'
 
 interface Player {
@@ -44,7 +44,7 @@ const PlayerHome: FC<Props> = props => {
     const [playMode, setPlayMode] = useState(1)
     const [playSong, setPlaySong] = useState<any>({})
     const [lyric, setLyric] = useState<any>({})
-    const [currentLyricNum, setCurrentLyrucNum] = useState(0)
+    // const [currentLyricNum, setCurrentLyrucNum] = useState(0)
     const [modal, setModal] = useState(false)
     const [isLoveSong, setIsloveSong] = useState(false)
     const currentIndex = player.currentIndex
@@ -228,6 +228,8 @@ const PlayerHome: FC<Props> = props => {
 
     const handleChangePlayState = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation()
+        console.log('loggggg', playSong, player.playUrl, playSong)
+
         if (playSong && player.playUrl.length !== 0 && JSON.stringify(playSong) !== '{}') {
             if (isPlay) {
                 audioRef.current.pause()
@@ -358,7 +360,7 @@ const PlayerHome: FC<Props> = props => {
             playMode === 3 ? setPlayMode(1) : setPlayMode(playMode + 1)
             isChangeMode.current = true
             switch (playMode) {
-                case 1:{
+                case 1: {
                     dispatch({
                         type: 'player/chageCurrentIndex',
                         payLoad: {
@@ -384,7 +386,7 @@ const PlayerHome: FC<Props> = props => {
                     })
                     break
                 }
-                case 3:{
+                case 3: {
                     const loopList = player.sequenceList
                     dispatch({
                         type: 'player/changePlayList',
@@ -470,7 +472,7 @@ const PlayerHome: FC<Props> = props => {
                                     <div className={styles.lyricLine}>当前暂不支持歌词自动滚动哦</div>
                                     <div className={styles.lyricLine}>请对开发者的勤劳充满期待吧~</div>
                                     {lyric.lines !== undefined && lyric.lines.map((item: { txt: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined }, index: React.Key | null | undefined) => (
-                                        <div key={index} className={classNames(styles.lyricLine, { [styles.currentLine]: currentLyricNum === index })}>{item.txt}</div>
+                                        <div key={index} className={classNames(styles.lyricLine)}>{item.txt}</div>
                                     ))}
                                 </Fragment>
                             }
@@ -481,7 +483,7 @@ const PlayerHome: FC<Props> = props => {
                         <div className={classNames(styles.imgWrapper, {
                             [styles.imgWrapperPlaying]: isPlay
                         })} onClick={() => { setShowLyric(true) }}>
-                            <img src={playSong ? playSong.picUrl : 'https://images.haiwainet.cn/20160428/1461790811999686.jpg'} alt="" />
+                            <img src={playSong ? playSong.picUrl : 'https://kffhi.com/public/images/end/miniPlayer.png'} alt="" />
                         </div>
                     </div>
                 }
@@ -564,6 +566,7 @@ const PlayerHome: FC<Props> = props => {
 
     return (
         <Fragment>
+            {props.children}
             {player.showMini ?
                 <MiniPlay
                     showBig={() => { handleShowMini() }}
@@ -600,4 +603,6 @@ const PlayerHome: FC<Props> = props => {
     )
 }
 
-export default connect()(PlayerHome)
+export default connect(({ player }: any) => ({
+    player
+}))(PlayerHome)

@@ -37,7 +37,7 @@ const MiniPlay: FC<Props> = props => {
     return (
         <div className={styles.miniPlay} onClick={() => { handleClick() }}>
             <div className={className(styles.imgWrapper, { [styles.imgWrapperPlaying]: isPlay })}>
-                <img src={playSong !== undefined ? playSong.picUrl : 'https://images.haiwainet.cn/20160428/1461790811999686.jpg'} alt="" />
+                <img src={playSong !== undefined ? playSong.picUrl : 'https://kffhi.com/public/images/end/miniPlayer.png'} alt="" />
             </div>
             <div className={styles.text}>
                 <div className={styles.title}>

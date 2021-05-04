@@ -53,7 +53,6 @@ export default class InfiniteScroll extends Component {
             emptyListNode,
             pageBean,
             onLoadMore,
-            children,
             className,
             isEmpty,
             hideBottomTips,
@@ -83,7 +82,6 @@ export default class InfiniteScroll extends Component {
             >
                 <ReactInfiniteScroll
                     useWindow={useWindow}
-                    children={children}
                     loadMore={() => {
                         if (!pageBean) {
                             if (!hasFetched) {
@@ -102,6 +100,7 @@ export default class InfiniteScroll extends Component {
                     className={className}
                     loader={<div key={0} className={styles.tips}>正在加载</div>}
                 />
+                {this.props.children}
                 {
                     !hasMore && !hideBottomTips &&
                     <div

@@ -4,6 +4,7 @@ import { getNetSongListCategory, getNetSongList } from '../../services/netease'
 import { getTencentSongListCategory, getTencentCartSongList } from '../../services/tencent'
 import { getXiamiSongListCategory, getXiamiSongList } from '../../services/xiami'
 import { Tabs } from 'antd-mobile'
+import PlayerHome from '../../layouts/index'
 import Header from '../../components/Header'
 import SongList from '../../components/SongList'
 import Loading from '../../components/Loading'
@@ -138,23 +139,25 @@ const SongListAll: FC<Props> = props => {
     }
 
     return (
-        <div className={styles.songListAll}>
-            <Header title={'歌单广场'} tab={tabSub} history={history} />
-            <div className={styles.tabs}>
-                <Tabs
-                    tabs={tabs}
-                    initialPage={0}
-                    onTabClick={tab => { changeData(tab) }}
-                >
-                    {
-                        tabs.map((index: number) => (
-                            <Fragment key={index}>
-                                {renderSongList()}
-                            </Fragment>
-                        ))}
-                </Tabs>
+        <PlayerHome>
+            <div className={styles.songListAll}>
+                <Header title={'歌单广场'} tab={tabSub} history={history} />
+                <div className={styles.tabs}>
+                    <Tabs
+                        tabs={tabs}
+                        initialPage={0}
+                        onTabClick={tab => { changeData(tab) }}
+                    >
+                        {
+                            tabs.map((index: number) => (
+                                <Fragment key={index}>
+                                    {renderSongList()}
+                                </Fragment>
+                            ))}
+                    </Tabs>
+                </div>
             </div>
-        </div>
+        </PlayerHome>
     )
 }
 export default connect()(SongListAll)

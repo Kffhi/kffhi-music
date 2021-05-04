@@ -5,13 +5,13 @@ import { getNetBanner, getNetSongList } from '../../services/netease'
 import { getTencentBanner, getTencentSongList } from '../../services/tencent'
 import { getXiamiBanner, getXiamiSongList } from '../../services/xiami'
 import { Tabs, Carousel } from 'antd-mobile'
+import PlayerHome from '../../layouts/index'
 import Accordion from '../../components/Accordion'
 import SongList from '../../components/SongList'
 import SongListItem from '../../components/SongListItem'
 import Loading from '../../components/Loading'
 import styles from './style.less'
 interface Player {
-    showMini: boolean;
     platform: any;
     playPlatform: string;
 }
@@ -226,10 +226,12 @@ const Home: FC<Props> = props => {
     }
 
     return (
-        <div className={styles.rootContainer}>
-            {renderHeader()}
-            {renderContainer()}
-        </div>
+        <PlayerHome>
+            <div className={styles.rootContainer}>
+                {renderHeader()}
+                {renderContainer()}
+            </div>
+        </PlayerHome>
     )
 }
 
