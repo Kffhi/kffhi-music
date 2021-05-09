@@ -2,13 +2,13 @@ import React, { FC } from 'react'
 import { Modal } from 'antd-mobile'
 import styles from './style.less'
 
-interface Info {
+type Info = {
     url: string;
     title: string;
     description: string;
 }
 
-interface Props {
+type Props = {
     modal: boolean;
     info: Info;
     handleClose: Function;
