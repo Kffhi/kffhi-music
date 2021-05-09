@@ -19,6 +19,8 @@ export default defineConfig({
         }
     ],
     fastRefresh: {},
+    base: '/kffhi-music',
+    publicPath: process.env.NODE_ENV === 'production' ? '/kffhi-music/' : '/',
     extraBabelPlugins: [
         ['import', { libraryName: 'antd-mobile', style: true }] //按需加载 antd-mobile 样式文件
     ],
