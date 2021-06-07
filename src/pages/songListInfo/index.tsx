@@ -5,7 +5,6 @@ import { getNetSongListDetail, getNetSongDetailData } from '../../services/netea
 import { getTencentSongListDetail } from '../../services/tencent'
 import { getXiamiSongListDetail } from '../../services/xiami'
 import { getLoveSong, saveLoveSongList, deleteLoveSongList, getLoveSongList } from '../../utils/cache'
-import PlayerHome from '../../layouts/index'
 import Header from '../../components/Header'
 import SongItem from '../../components/SongItem'
 import Loading from '../../components/Loading'
@@ -239,23 +238,21 @@ const SongListInfo: FC<Props> = props => {
     }
 
     return (
-        <PlayerHome>
-            <div className={styles.songListInfo}>
-                <Information
-                    modal={modal}
-                    info={songListDetail}
-                    handleClose={() => { setModal(false) }}
-                />
-                <Header tab={tabSub} history={history} title={'歌单详情'}></Header>
-                {JSON.stringify(songListDetail) !== '{}' ?
-                    <Fragment>
-                        {renderDetail()}
-                        {renderSongList()}
-                    </Fragment> :
-                    <Loading />
-                }
-            </div>
-        </PlayerHome>
+        <div className={styles.songListInfo}>
+            <Information
+                modal={modal}
+                info={songListDetail}
+                handleClose={() => { setModal(false) }}
+            />
+            <Header tab={tabSub} history={history} title={'歌单详情'}></Header>
+            {JSON.stringify(songListDetail) !== '{}' ?
+                <Fragment>
+                    {renderDetail()}
+                    {renderSongList()}
+                </Fragment> :
+                <Loading />
+            }
+        </div>
     )
 }
 export default connect(({ player }: any) => ({

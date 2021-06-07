@@ -3,7 +3,6 @@ import { saveSearch, getSearch } from '../../utils/cache'
 import { getNetHotSearch, getNetSearchResult, getNetSongDetailData } from '../../services/netease'
 import { getTencentHotSearch, getTencentSearchResult } from '../../services/tencent'
 import { getXiamiHotSearch, getXiamiSearchResult } from '../../services/xiami'
-import PlayerHome from '../../layouts/index'
 import SongItem from '../../components/SongItem'
 import Loading from '../../components/Loading'
 import styles from './style.less'
@@ -269,12 +268,10 @@ const Search: FC<Props> = props => {
     }
 
     return (
-        <PlayerHome>
-            <div className={styles.search}>
-                {renderHeader()}
-                {isSearch ? renderReault() : renderNoSearch()}
-            </div>
-        </PlayerHome>
+        <div className={styles.search}>
+            {renderHeader()}
+            {isSearch ? renderReault() : renderNoSearch()}
+        </div>
     )
 }
 export default Search

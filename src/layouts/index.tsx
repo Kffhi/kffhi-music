@@ -228,7 +228,6 @@ const PlayerHome: FC<Props> = props => {
 
     const handleChangePlayState = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation()
-        console.log('loggggg', playSong, player.playUrl, playSong)
 
         if (playSong && player.playUrl.length !== 0 && JSON.stringify(playSong) !== '{}') {
             if (isPlay) {

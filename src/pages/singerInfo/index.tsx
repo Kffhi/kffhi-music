@@ -3,7 +3,6 @@ import { connect } from 'dva'
 import { getNetSingerInfo } from '../../services/netease'
 import { getTencentSingerInfo } from '../../services/tencent'
 import { getXiamiSingerInfo } from '../../services/xiami'
-import PlayerHome from '../../layouts/index'
 import Header from '../../components/Header'
 import SongItem from '../../components/SongItem'
 import Loading from '../../components/Loading'
@@ -158,18 +157,16 @@ const SingerInfo: FC<Props> = props => {
     }
 
     return (
-        <PlayerHome>
-            <div className={styles.singerInfo}>
-                <Information
-                    modal={modal}
-                    info={singerInfo}
-                    handleClose={() => { setModal(false) }}
-                />
-                <Header history={history} title={'歌手详情'}></Header>
-                {renderDetail()}
-                {renderSongList()}
-            </div>
-        </PlayerHome>
+        <div className={styles.singerInfo}>
+            <Information
+                modal={modal}
+                info={singerInfo}
+                handleClose={() => { setModal(false) }}
+            />
+            <Header history={history} title={'歌手详情'}></Header>
+            {renderDetail()}
+            {renderSongList()}
+        </div>
     )
 }
 export default connect()(SingerInfo)

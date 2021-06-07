@@ -1,7 +1,6 @@
 import React, { FC, Fragment } from 'react'
 // import className from 'classnames'
 import { getLoveSongList } from '../../utils/cache'
-import PlayerHome from '../../layouts/index'
 import Header from '../../components/Header'
 import Accordion from '../../components/Accordion'
 import SongListItem from '../../components/SongListItem'
@@ -75,13 +74,11 @@ const UserInfo: FC<Props> = props => {
     }
 
     return (
-        <PlayerHome>
-            <div className={styles.userInfo}>
-                <Header history={history} title={'个人中心'} />
-                {renderDetail()}
-                {renderMyMusic()}
-            </div>
-        </PlayerHome>
+        <div className={styles.userInfo}>
+            <Header history={history} title={'个人中心'} />
+            {renderDetail()}
+            {renderMyMusic()}
+        </div>
     )
 }
 export default UserInfo
