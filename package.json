@@ -20,8 +20,7 @@
         ],
         "*.ts?(x)": [
             "prettier --parser=typescript",
-            "eslint src/**/*.tsx",
-            "git add"
+            "eslint src/**/*.tsx"
         ]
     },
     "dependencies": {
