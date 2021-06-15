@@ -17,9 +17,14 @@ const Header: FC<Props> = props => {
     const { history, title, tab = 'NETEASE', dispatch } = props
 
     const goBack = () => {
-        const info = '点击Header'
-        Toast.info(info)
-        history.push('/home')
+        fetch('https://www.kffhi.com/public/data/data.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('报错', data.info)
+                data.info.concat([])
+                Toast.info(data.info)
+            })
+        history.push('/')
         dispatch({
             type: 'player/changePlatform',
             payLoad: {

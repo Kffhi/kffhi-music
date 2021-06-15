@@ -1,11 +1,9 @@
 import * as Sentry from '@sentry/react'
-import { Integrations } from '@sentry/tracing'
 import { isProd } from '@/utils/env'
 
 if (isProd()) {
     Sentry.init({
         dsn: 'https://ec29942873454883a3316a6245ce4b3d@o635537.ingest.sentry.io/5804279',
-        integrations: [new Integrations.BrowserTracing()],
 
         // Set tracesSampleRate to 1.0 to capture 100%
         // of transactions for performance monitoring.
