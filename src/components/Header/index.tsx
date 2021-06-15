@@ -2,6 +2,7 @@ import React, { Fragment, FC } from 'react'
 import { connect } from 'dva'
 import classNames from 'classnames'
 import styles from './style.less'
+import { Toast } from 'antd-mobile'
 
 interface Props {
     history: any;
@@ -16,6 +17,8 @@ const Header: FC<Props> = props => {
     const { history, title, tab = 'NETEASE', dispatch } = props
 
     const goBack = () => {
+        const info = '点击Header'
+        Toast.info(info)
         history.push('/home')
         dispatch({
             type: 'player/changePlatform',

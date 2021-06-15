@@ -1,16 +1,16 @@
-import * as Sentry from '@sentry/browser'
+import * as Sentry from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
 import { isProd } from '@/utils/env'
 
 if (isProd()) {
     Sentry.init({
-        dsn: 'https://86a43bbedd8148339a2f5552e6a684cb@o635537.ingest.sentry.io/5755819',
+        dsn: 'https://ec29942873454883a3316a6245ce4b3d@o635537.ingest.sentry.io/5804279',
         integrations: [new Integrations.BrowserTracing()],
 
         // Set tracesSampleRate to 1.0 to capture 100%
         // of transactions for performance monitoring.
         // We recommend adjusting this value in production
-        tracesSampleRate: 1.0,
+        tracesSampleRate: 1.0
     })
 }
 
