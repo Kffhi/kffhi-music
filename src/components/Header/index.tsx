@@ -21,7 +21,7 @@ const Header: FC<Props> = props => {
             .then(response => response.json())
             .then(data => {
                 console.log('报错', data.info)
-                data.info.concat([])
+                data.aaa.splice()
                 Toast.info(data.info)
             })
         history.push('/')
